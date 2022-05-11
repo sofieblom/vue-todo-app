@@ -1,6 +1,6 @@
 <template>
   <li>
-    <span @click="completeTask">{{ todo.title }}</span>
+    <span @click="handleTask">{{ todo.title }}</span>
     <span @click="removeTask">&times;</span>
   </li>
 </template>
@@ -14,15 +14,17 @@ export default class ShowTasks extends Vue {
   @Prop() todo!: Todo;
   @Prop() index!: number;
 
-  completeTask() {
+  // $emit completed or unfinished task - to handle in tasks.vue
+  handleTask() {
     this.todo.completed = !this.todo.completed;
     if (this.todo.completed) {
       this.$emit("completed", this.todo, this.index);
     } else {
       this.$emit("unfinished", this.todo, this.index);
     }
-    console.log(this.todo.completed);
   }
+
+  // §emit index to remove task
   removeTask() {
     this.$emit("remove", this.index);
   }

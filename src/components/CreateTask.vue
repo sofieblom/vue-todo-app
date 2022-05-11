@@ -7,7 +7,7 @@
       @keypress.enter="handleClick"
     />
     <button class="add_btn add_btn--primary" v-on:click="handleClick">
-      {{ buttonContent }}
+      &#8594;
     </button>
     <p class="empty_paragraph">{{ emtypInput }}</p>
   </div>
@@ -19,13 +19,13 @@ import { Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
 export default class CreateTask extends Vue {
-  buttonContent = "Add";
   emtypInput = "";
   newTodo = "";
   newId = 0;
 
   @Prop() todolist!: Todo[];
 
+  // emit new todo and create a new id - if input is emtyp -> message
   handleClick() {
     if (this.newTodo.length > 0) {
       this.newId = this.todolist.length + 1;

@@ -33,6 +33,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Todo } from "@/models/Todo";
 import { Options, Vue } from "vue-class-component";
@@ -58,26 +59,33 @@ export default class Tasks extends Vue {
     new Todo(4, "baka en god kaka", false),
   ];
 
+  // Functions
+
+  //   add new todo to list
   handleAddTodo(newTodo: Todo) {
     this.unfinishedTasks.push(newTodo);
   }
 
+  // move task to completed and remove from unfinished
   moveToCompletedTask(todo: Todo, i: number) {
     this.completedTasks.push(todo);
     this.unfinishedTasks.splice(i, 1);
   }
 
+  // move task to unfinish and remove from completed
   moveToUnfinished(todo: Todo, i: number) {
     this.unfinishedTasks.push(todo);
     this.completedTasks.splice(i, 1);
   }
 
+  // delete completed task
   removeCompletedTask(i: number) {
     if (this.completed) {
       this.completedTasks.splice(i, 1);
     }
   }
 
+  // delete unfinished task
   removeUnfinishedTask(i: number) {
     if (this.completed) {
       this.unfinishedTasks.splice(i, 1);
