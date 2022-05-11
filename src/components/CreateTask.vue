@@ -6,7 +6,7 @@
       placeholder="Add new task"
       @keypress.enter="handleClick"
     />
-    <button class="add_btn" v-on:click="handleClick">
+    <button class="add_btn add_btn--primary" v-on:click="handleClick">
       {{ buttonContent }}
     </button>
     <p class="empty_paragraph">{{ emtypInput }}</p>

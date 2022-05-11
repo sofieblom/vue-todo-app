@@ -1,47 +1,102 @@
 body {
     margin: 0 auto;
-  
+
     #app {
       font-family: Georgia, "Times New Roman", Times, serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
       color: #2c3e50;
-    }
-  
+      height: 100vh;
+      background-color: rgb(34, 33, 33);
+      // background-color: rgb(13, 74, 48);
+
+      color: #e8e5e5;
+
+      h1{
+        margin: 0px;
+        padding:15px;
+        color: rgb(223, 146, 2)
+      }
+
     .wrapper {
-      background-color: gray;
+      display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
       .add_container {
-        background-color: white;
+        // background-color: white;
         padding: 20px;
         input {
-          width: 300px;
+          width: 280px;
           height: 20px;
+          box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+          border: 0;
+          outline: 0;
+          padding: 8px 10px;
         }
         .add_btn {
-          width: 70px;
-          height: 26px;
-        }
-      }
-      .todos_container {
-        padding: 10px;
-        ul {
-          list-style-type: none;
-          padding: 0px;
-          li {
-            font-size: 1.2rem;
-            cursor: pointer;
+          // width: 70px;
+          // height: 26px;
+          width:55px;
+          height: 55px;
+          border-radius: 100px;
+          display: inline-block;
+          background-color: #7f8ff4;;
+          border: 0;
+          padding: 0;  
+          margin-left: -40px;
+          
+          cursor: pointer;
+          &:hover{
+            background-color: #7284f7;
+            box-shadow: 1px 1px 5px 1px rgba(72, 72, 72, 0.1);
           }
         }
       }
+      .todos_container {
+        min-height: 200px;
+        width: 90%;
+        padding: 10px;
+        // border: 1px solid black;
+        ul {
+          list-style-type: none;
+          padding: 0px;
+          display: flex;
+          flex-direction: column;
+          gap:8px;
+          li {
+              display: flex;
+              justify-content: space-between;
+              font-size: 1.2rem;
+              padding:5px;
+              cursor: pointer;
+              background-color: rgba(128, 128, 128, 0.128);
+          }
+        }
+      }
+    }
     }
   }
   .active {
     text-decoration: line-through;
   }
+  input:focus-within{
+    background:rgba(234, 232, 232, 0.775);
+  }
   @media screen and(min-width: 768px) {
+    body{
+      #app {
+        height: 100vh;
+
     .wrapper {
       background-color: orange;
+      padding: 20px;
+      .todos_container {
+        background-color: pink;
+        width: 50%;
+      }
     }
   }
-  
+    }
+  }

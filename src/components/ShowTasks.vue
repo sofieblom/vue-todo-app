@@ -1,6 +1,7 @@
 <template>
-  <li @click="completeTask">
-    {{ todo.title }}
+  <li>
+    <span @click="completeTask">{{ todo.title }}</span>
+    <span @click="removeTask">&times;</span>
   </li>
 </template>
 
@@ -11,16 +12,19 @@ import { Prop } from "vue-property-decorator";
 
 export default class ShowTasks extends Vue {
   @Prop() todo!: Todo;
-  @Prop() completedTasks!: Todo[];
   @Prop() index!: number;
 
   completeTask() {
     this.todo.completed = !this.todo.completed;
     if (this.todo.completed) {
-      this.completedTasks.push(this.todo);
       this.$emit("completed", this.todo, this.index);
+    } else {
+      this.$emit("unfinished", this.todo, this.index);
     }
     console.log(this.todo.completed);
+  }
+  removeTask() {
+    this.$emit("remove", this.index);
   }
 }
 </script>

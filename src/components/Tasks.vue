@@ -4,26 +4,30 @@
     <CreateTask :todolist="unfinishedTasks" @addTodo="handleAddTodo($event)" />
 
     <div class="todos_container">
+      <h2>Unfinished tasks</h2>
+
       <ul>
         <ShowTasks
           v-for="(todo, i) in unfinishedTasks"
           :index="i"
           :todo="todo"
           :key="todo.id"
-          :completedTasks="completedTasks"
-          @completed="removeUnfinishedTodo($event, i)"
+          @completed="moveToCompletedTask($event, i)"
+          @remove="removeUnfinishedTask($event)"
         ></ShowTasks>
       </ul>
-
+    </div>
+    <div class="todos_container">
       <br />
       <h2>Completed tasks</h2>
       <ul>
         <ShowTasks
-          :class="'active'"
-          v-for="c in completedTasks"
+          v-for="(c, i) in completedTasks"
           :todo="c"
+          :index="i"
           :key="c.id"
-          :completedTasks="completedTasks"
+          @unfinished="moveToUnfinished($event, i)"
+          @remove="removeCompletedTask($event)"
         ></ShowTasks>
       </ul>
     </div>
@@ -50,15 +54,34 @@ export default class Tasks extends Vue {
     new Todo(0, "handla", false),
     new Todo(1, "springa", false),
     new Todo(2, "dricka kaffe", false),
+    new Todo(3, "städa badrummet", false),
+    new Todo(4, "baka en god kaka", false),
   ];
 
   handleAddTodo(newTodo: Todo) {
     this.unfinishedTasks.push(newTodo);
   }
 
-  removeUnfinishedTodo(completedTask: Todo, i: number) {
-    console.log("fubka rå");
+  moveToCompletedTask(todo: Todo, i: number) {
+    this.completedTasks.push(todo);
     this.unfinishedTasks.splice(i, 1);
+  }
+
+  moveToUnfinished(todo: Todo, i: number) {
+    this.unfinishedTasks.push(todo);
+    this.completedTasks.splice(i, 1);
+  }
+
+  removeCompletedTask(i: number) {
+    if (this.completed) {
+      this.completedTasks.splice(i, 1);
+    }
+  }
+
+  removeUnfinishedTask(i: number) {
+    if (this.completed) {
+      this.unfinishedTasks.splice(i, 1);
+    }
   }
 }
 </script>
