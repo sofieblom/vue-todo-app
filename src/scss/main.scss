@@ -6,7 +6,7 @@ body {
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
       color: #2c3e50;
-      height: 100vh;
+      min-height: 100vh;
       background-color: rgb(34, 33, 33);
       color: #e8e5e5;
       h1{
@@ -19,11 +19,12 @@ body {
       flex-direction: column;
       gap: 10px;
       align-items: center;
+      background-color: rgb(34, 33, 33);
       .add_container {
         padding: 20px;
         input {
           width: 280px;
-          background:rgba(234, 232, 232, 0.775);
+          // background:rgba(234, 232, 232, 0.775);
           height: 20px;
           box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
           border: 0;
@@ -42,7 +43,7 @@ body {
           margin-left: -40px;
           cursor: pointer;
           &:hover{
-            background-color: #7284f7;
+            background-color: #8e9bf1;;
             box-shadow: 1px 1px 5px 1px rgba(72, 72, 72, 0.1);
           }
         }
@@ -67,14 +68,20 @@ body {
               display: flex;
               justify-content: space-between;
               font-size: 1.2rem;
-              padding:8px;
-              padding-left: 18px;
+              padding:8px 20px;
               border-radius: 100px;
-              cursor: pointer;
               background-color: rgba(128, 128, 128, 0.128);
               transition: background-color 0.5s linear;
               &:hover {
                 background-color: rgba(128, 128, 128, 0.317);
+              }
+              span {
+              cursor: pointer;
+              }
+              span:last-child{
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: rgba(223, 146, 2, 0.609)
               }
           }
         }
@@ -86,7 +93,7 @@ body {
     text-decoration: line-through;
   }
   input:focus-within{
-    background:rgba(234, 232, 232, 0.775);
+    background:rgba(255, 255, 255, 0.922);
   }
   @media screen and(min-width: 768px) {
     body{

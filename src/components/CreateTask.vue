@@ -6,9 +6,7 @@
       placeholder="Add new task"
       @keypress.enter="handleClick"
     />
-    <button class="add_btn add_btn--primary" v-on:click="handleClick">
-      &#8594;
-    </button>
+    <button class="add_btn" v-on:click="handleClick">&#8594;</button>
     <p class="empty_paragraph">{{ emtypInput }}</p>
   </div>
 </template>
@@ -31,6 +29,7 @@ export default class CreateTask extends Vue {
       this.newId = this.todolist.length + 1;
       this.$emit("addTodo", new Todo(this.newId, this.newTodo, false));
       this.newTodo = "";
+      this.emtypInput = "";
     } else {
       this.emtypInput = "You have to write something";
     }
